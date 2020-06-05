@@ -20,7 +20,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.2/semantic.min.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+ $(".sidebar-dropdown > a").click(function () {
+  $(".sidebar-submenu").slideUp(200);
+  if ($(this).parent().hasClass("active")) {
+      $(".sidebar-dropdown").removeClass("active");
+      $(this).parent().removeClass("active");
+  } else {
+      $(".sidebar-dropdown").removeClass("active");
+      $(this).next(".sidebar-submenu").slideDown(200);
+      $(this).parent().addClass("active");
+  }
+
+});
+$("#toggle-sidebar").click(function () {
+  $(".page-wrapper").toggleClass("toggled");
+});
+</script>
 </head>
 
 

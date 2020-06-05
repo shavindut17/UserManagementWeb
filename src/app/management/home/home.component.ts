@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 
- public  currentUser: any;
+ public  currentUser = new User();
  public  navigationPage: any;
  public  headerText: any;
  public  headerDescription: any;
@@ -19,7 +19,10 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService) {
     this.getUser();
   }
+
+
   ngOnInit() {
+    this.loadJquery();
     this.navigationPage = 'landing';
     this.headerText = 'Faster Bakers';
     this.headerDescription = 'Faster bakers admin panel';
@@ -40,6 +43,25 @@ export class HomeComponent implements OnInit {
         this.headerText = 'Created Items';
         this.headerDescription =  'Items currently showing';
       }
+  }
+
+  loadJquery(){
+    $(".sidebar-dropdown > a").click(function () {
+      $(".sidebar-submenu").slideUp(200);
+      if ($(this).parent().hasClass("active")) {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this).parent().removeClass("active");
+      } else {
+          $(".sidebar-dropdown").removeClass("active");
+          $(this).next(".sidebar-submenu").slideDown(200);
+          $(this).parent().addClass("active");
+      }
+
+  });
+  $("#toggle-sidebar").click(function () {
+      $(".page-wrapper").toggleClass("toggled");
+  });
+
   }
 
 }
