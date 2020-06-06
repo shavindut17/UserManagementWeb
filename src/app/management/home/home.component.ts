@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.getUser();
   }
 
@@ -36,14 +37,21 @@ export class HomeComponent implements OnInit {
 
   navigation(selection) {
       this.navigationPage = selection ;
-      if (selection === 'create') {
-          this.headerText = 'Item Creation';
-          this.headerDescription =  'Please Create Items to show on the web site ';
+      if (selection === 'ProductTypeCreation') {
+          this.headerText = 'Product Type Creation';
+          this.headerDescription =  'Please Create Product Type to show on the web site ';
       } else if (selection === 'all') {
         this.headerText = 'Created Items';
         this.headerDescription =  'Items currently showing';
       }
   }
+
+
+  logOut(){
+    window.localStorage.setItem('currentUser', null);
+    this.router.navigate(['']);
+  }
+
 
   loadJquery(){
     $(".sidebar-dropdown > a").click(function () {

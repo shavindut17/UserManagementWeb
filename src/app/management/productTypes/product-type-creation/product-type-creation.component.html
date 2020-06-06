@@ -1,0 +1,32 @@
+<form  [formGroup]="form" (ngSubmit) ="addProductType()">
+  <div>
+    <h2 class="ui header">New Product Type<i class="user secret icon"></i></h2>
+  <div hidden class="form-group">
+    <label >Id</label>
+    <input type="text" class="form-control" id="inputId" formControlName="id">
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label >Name</label>
+    <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Enter Name">
+    <div *ngIf="form.get('name').touched &&  form.get('name').errors" class="alert alert-danger">Name required</div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label >Description</label>
+    <textarea class="form-control" id="inputDescription" formControlName="description" placeholder="Enter Description"></textarea>
+    <div *ngIf="form.get('description').touched &&  form.get('description').errors" class="alert alert-danger">Description required</div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label>Picture</label>
+   <app-image-upload (uploadFinishTrigger)='uploadFinishTrigger($event)'></app-image-upload>
+  </div>
+  <div  class="col-md-4 mb-3">
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" formControlName="isActive" id="isActive">
+    <label class="form-check-label" for="exampleCheck1">Active Product Type</label>
+  </div>
+</div>
+  <button class="ui primary button" type="submit">
+    Save
+  </button>
+</div>
+</form>

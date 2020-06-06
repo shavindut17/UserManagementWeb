@@ -44,32 +44,42 @@
                   <li class="header-menu">
                       <span>Food Management</span>
                   </li>
-                  <li class="sidebar-dropdown" (click)="navigation('create')">
+                  <li class="sidebar-dropdown">
                       <a>
-                          <i class="fa fa-tachometer-alt"></i>
-                          <span>Create</span>
-                          <span class="badge badge-pill badge-danger">New</span>
+                          <i class="fa fa-shopping-basket"></i>
+                          <span>Product Types</span>
                       </a>
+                      <div class="sidebar-submenu">
+                        <ul>
+                            <li>
+                                <a (click)="navigation('ProductTypeCreation')">Create Product Type</a>
+                            </li>
+                            <li>
+                                <a >View Product Types</a>
+                            </li>
+                            <li>
+                                <a>Edit Product Type</a>
+                            </li>
+                        </ul>
+                    </div>
 
                   </li>
                   <li class="sidebar-dropdown" (click)="navigation('all')">
                       <a >
                           <i class="fa fa-shopping-cart"></i>
-                          <span>All Items </span>
+                          <span>Products</span>
                           <span class="badge badge-pill badge-primary">3</span>
                       </a>
                       <div class="sidebar-submenu">
                           <ul>
                               <li>
-                                  <a >Products
-
-                                  </a>
+                                  <a>Create Product</a>
                               </li>
                               <li>
-                                  <a >Orders</a>
+                                  <a>View Products</a>
                               </li>
                               <li>
-                                  <a >Credit cart</a>
+                                  <a>Edit Product</a>
                               </li>
                           </ul>
                       </div>
@@ -177,7 +187,7 @@
               <span class="badge-sonar"></span>
           </a>
           <a>
-              <i class="fa fa-power-off"></i>
+              <i class="fa fa-power-off" (click)="logOut()"> </i>
           </a>
       </div>
   </nav>
@@ -200,11 +210,11 @@
       <div *ngIf="this.navigationPage==='landing'">
       <app-landing></app-landing>
       </div >
-      <div *ngIf="this.navigationPage==='create'">
-        <app-create-item></app-create-item>
+      <div *ngIf="this.navigationPage==='ProductTypeCreation'">
+        <app-product-type-creation></app-product-type-creation>
       </div>
       <div *ngIf="this.navigationPage==='all'">
-        <app-all-items></app-all-items>
+        <!-- <app-all-items></app-all-items> -->
       </div>
 </main>
 <!-- page-content" -->
