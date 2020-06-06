@@ -64,7 +64,7 @@
                     </div>
 
                   </li>
-                  <li class="sidebar-dropdown" (click)="navigation('all')">
+                  <li class="sidebar-dropdown">
                       <a >
                           <i class="fa fa-shopping-cart"></i>
                           <span>Products</span>
@@ -73,7 +73,7 @@
                       <div class="sidebar-submenu">
                           <ul>
                               <li>
-                                  <a>Create Product</a>
+                                  <a (click)="navigation('ProductCreation')">Create Product</a>
                               </li>
                               <li>
                                   <a>View Products</a>
@@ -207,15 +207,16 @@
               </div>
           </div>
       </div>
-      <div *ngIf="this.navigationPage==='landing'">
-      <app-landing></app-landing>
-      </div >
-      <div *ngIf="this.navigationPage==='ProductTypeCreation'">
+      <div *ngIf="this.navigationPage ==='landing'">
+        <app-landing></app-landing>
+      </div>
+      <div *ngIf="this.navigationPage ==='ProductCreation'">
+          <app-product-creation></app-product-creation>
+      </div>
+      <div *ngIf="this.navigationPage ==='ProductTypeCreation'">
         <app-product-type-creation></app-product-type-creation>
       </div>
-      <div *ngIf="this.navigationPage==='all'">
-        <!-- <app-all-items></app-all-items> -->
-      </div>
+
 </main>
 <!-- page-content" -->
 </div>

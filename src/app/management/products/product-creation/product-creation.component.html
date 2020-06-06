@@ -1,3 +1,71 @@
-<p>
-  product-creation works!
-</p>
+<form  [formGroup]="form" (ngSubmit) ="addProduct()">
+  <div>
+    <h2 class="ui header">Product<i class="user secret icon"></i></h2>
+  <div hidden class="form-group">
+    <label >Id</label>
+    <input type="text" class="form-control" id="inputId" formControlName="id">
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label >Name</label>
+    <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Enter Name">
+    <div *ngIf="form.get('name').touched &&  form.get('name').errors" class="alert alert-danger">Name required</div>
+  </div>
+
+
+
+
+  <div class="col-md-4 mb-3">
+    <label >Product Type</label>
+    <select class="custom-select" (change)="changeProductType($event)" formControlName="productTypeId">
+      <option value="">Select Product Type</option>
+      <option *ngFor="let productType of productTypes" [ngValue]="productType._id">{{productType.name}}</option>
+    </select>
+    <div *ngIf="form.get('productTypeId').touched &&  form.get('productTypeId').errors" class="alert alert-danger">Product Type required</div>
+    <!-- error block -->
+    <!-- <div class="invalid-feedback" *ngIf="isSubmitted && cityName.errors?.required">
+      <sup>*</sup>Please enter your city name
+    </div> -->
+  </div>
+
+
+
+
+
+  <div  class="col-md-4 mb-3">
+    <label >Description</label>
+    <textarea class="form-control" id="inputDescription" formControlName="description" placeholder="Enter Description"></textarea>
+    <div *ngIf="form.get('description').touched &&  form.get('description').errors" class="alert alert-danger">Description required</div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label >Buying Price</label>
+    <input type="number" class="form-control" id="inputBuyingPrice" formControlName="buyingPrice" placeholder="Enter Buying Price">
+    <div *ngIf="form.get('buyingPrice').touched &&  form.get('buyingPrice').errors" class="alert alert-danger"> Buying Price required</div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label >Selling Price</label>
+    <input type="number" class="form-control" id="inputSellingPrice" formControlName="sellingPrice" placeholder="Enter Selling Price">
+    <div *ngIf="form.get('sellingPrice').touched &&  form.get('sellingPrice').errors" class="alert alert-danger"> Selling Price required</div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" formControlName="isActive" id="isActive">
+      <label class="form-check-label" for="exampleCheck1">Active Product</label>
+    </div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" formControlName="isAvailable" id="isAvailable">
+      <label class="form-check-label" for="exampleCheck1">Available Product</label>
+    </div>
+  </div>
+  <div  class="col-md-4 mb-3">
+    <label>Picture</label>
+   <app-image-upload (uploadFinishTrigger)='uploadFinishTrigger($event)'></app-image-upload>
+  </div>
+<div  class="col-md-4 mb-3">
+  <button class="ui primary button" type="submit">
+    Save
+  </button>
+</div>
+</div>
+</form>

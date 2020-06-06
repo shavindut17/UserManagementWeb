@@ -36,13 +36,14 @@ export class HomeComponent implements OnInit {
   }
 
   navigation(selection) {
+    debugger ;
       this.navigationPage = selection ;
       if (selection === 'ProductTypeCreation') {
           this.headerText = 'Product Type Creation';
           this.headerDescription =  'Please Create Product Type to show on the web site ';
-      } else if (selection === 'all') {
-        this.headerText = 'Created Items';
-        this.headerDescription =  'Items currently showing';
+      } else if (selection === 'ProductCreation') {
+        this.headerText = 'Product  Creation';
+        this.headerDescription =  'Please Create Product to show on the web site ';
       }
   }
 

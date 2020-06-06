@@ -1,12 +1,12 @@
 export class Product {
-    public _id: string;
+    public _id: number;
     public name: string;
-    public productTypeId: string;
+    public productTypeId: number;
     public picture: string;
     public description: Date ;
-    public sellingPrice: string ;
-    public buyingPrice: string ;
-    public isActive: string ;
-    public isAvailable: string ;
+    public sellingPrice: number ;
+    public buyingPrice: number ;
+    public isActive: boolean ;
+    public isAvailable: boolean ;
 
 }
