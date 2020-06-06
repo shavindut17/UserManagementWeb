@@ -45,7 +45,7 @@ export class ProductTypeCreationComponent implements OnInit {
 
 addProductType() {
   this.form.markAsTouched();
-
+   debugger ;
   if (this.form.invalid) {
    const productType: ProductType = {
      _id: -1,
@@ -55,7 +55,7 @@ addProductType() {
      isActive :this.form.value.isActive,
      numberOfProducts :0
    };
-   this.productTypeService.post(productType).subscribe(res => {
+   this.productTypeService.postProductType(productType).subscribe(res => {
      try {
       this.form.reset();
       this.toastrService.success('Product Type Creation  Successfull');

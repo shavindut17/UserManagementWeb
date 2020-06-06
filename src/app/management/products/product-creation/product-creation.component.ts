@@ -22,7 +22,8 @@ export class ProductCreationComponent implements OnInit {
               private productTypeService: ProductTypeService,
               private productService: ProductService,
               private toastrService: ToastrService) {
-                this.createForm();
+               this.loadAllProductTypes();
+              this.createForm();
                }
 
   ngOnInit() {
@@ -39,6 +40,18 @@ export class ProductCreationComponent implements OnInit {
       isAvailable: ['', Validators.required],
       buyingPrice: ['', Validators.required],
       sellingPrice: ['', Validators.required],
+    });
+  }
+
+
+  loadAllProductTypes(){
+    this.productTypeService.get().subscribe(res=>{
+      try {
+        this.productTypes = res as ProductType[];
+      } catch (error) {
+        this.toastrService.error(error);
+      }
+
     });
   }
 
