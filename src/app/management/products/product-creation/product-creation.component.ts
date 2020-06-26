@@ -45,7 +45,7 @@ export class ProductCreationComponent implements OnInit {
 
 
   loadAllProductTypes(){
-    this.productTypeService.get().subscribe(res=>{
+    this.productTypeService.getProductTypes().subscribe( res => {
       try {
         this.productTypes = res as ProductType[];
       } catch (error) {
@@ -75,11 +75,10 @@ export class ProductCreationComponent implements OnInit {
        productTypeId : this.form.value.productTypeId
 
      };
-     this.productService.post(product).subscribe(res => {
+     this.productService.postProduct(product).subscribe(res => {
        try {
         this.form.reset();
         this.toastrService.success('Product  Creation  Successfull');
-        this.router.navigate(['']);
        } catch (err) {
         this.toastrService.error(err);
        }

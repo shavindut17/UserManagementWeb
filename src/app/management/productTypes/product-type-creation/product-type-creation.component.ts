@@ -45,21 +45,19 @@ export class ProductTypeCreationComponent implements OnInit {
 
 addProductType() {
   this.form.markAsTouched();
-   debugger ;
   if (this.form.invalid) {
    const productType: ProductType = {
      _id: -1,
      name: this.form.value.name,
      description : this.form.value.description,
      picture: this.picture,
-     isActive :this.form.value.isActive,
-     numberOfProducts :0
+     isActive : this.form.value.isActive,
+     numberOfProducts : 0
    };
    this.productTypeService.postProductType(productType).subscribe(res => {
      try {
       this.form.reset();
       this.toastrService.success('Product Type Creation  Successfull');
-      this.router.navigate(['']);
      } catch (err) {
       this.toastrService.error(err);
      }

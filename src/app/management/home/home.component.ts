@@ -36,11 +36,16 @@ export class HomeComponent implements OnInit {
   }
 
   navigation(selection) {
-    debugger ;
-      this.navigationPage = selection ;
-      if (selection === 'ProductTypeCreation') {
+    this.navigationPage = selection ;
+    if (selection === 'ProductTypeCreation') {
           this.headerText = 'Product Type Creation';
           this.headerDescription =  'Please Create Product Type to show on the web site ';
+      } else if (selection === 'ViewAllProductTypes') {
+        this.headerText = 'Product Types';
+        this.headerDescription =  'All the product types available';
+      } else if (selection === 'EditAllProductTypes') {
+        this.headerText = 'Edit Product Types';
+        this.headerDescription =  'All the product types available';
       } else if (selection === 'ProductCreation') {
         this.headerText = 'Product  Creation';
         this.headerDescription =  'Please Create Product to show on the web site ';
@@ -67,7 +72,7 @@ export class HomeComponent implements OnInit {
       }
 
   });
-  $("#toggle-sidebar").click(function () {
+    $("#toggle-sidebar").click(function () {
       $(".page-wrapper").toggleClass("toggled");
   });
 

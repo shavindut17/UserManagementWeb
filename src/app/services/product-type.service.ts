@@ -26,13 +26,21 @@ export class ProductTypeService extends CrudService {
     return httpOptions;
   }
 
-  postProductType(body: any): Observable<any> {
+
+  postProductType(body: any, params?: HttpParams): Observable<any> {
+    delete body._id;
     const httpOptions = this.getHttpOptions();
-    return this.http.post<ProductType>(this.url + '/', body, httpOptions);
+    return this.http.post<ProductType>(this.url , body, httpOptions);
   }
 
   getProductTypes(): Observable<any> {
     const httpOptions = this.getHttpOptions();
-    return this.http.get<ProductType>(this.url + '/', httpOptions);
+    return this.http.get<ProductType>(this.url, httpOptions);
+  }
+
+  updateProductType(body: any, params?: HttpParams): Observable<any> {
+    delete body._id;
+    const httpOptions = this.getHttpOptions();
+    return this.http.patch<ProductType>(this.url , body, httpOptions);
   }
 }

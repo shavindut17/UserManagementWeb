@@ -55,10 +55,10 @@
                                 <a (click)="navigation('ProductTypeCreation')">Create Product Type</a>
                             </li>
                             <li>
-                                <a >View Product Types</a>
+                              <a (click)="navigation('ViewAllProductTypes')">View Product Types</a>
                             </li>
                             <li>
-                                <a>Edit Product Type</a>
+                              <a (click)="navigation('EditAllProductTypes')">Edit Product Types</a>
                             </li>
                         </ul>
                     </div>
@@ -76,10 +76,10 @@
                                   <a (click)="navigation('ProductCreation')">Create Product</a>
                               </li>
                               <li>
-                                  <a>View Products</a>
+                                <a (click)="navigation('ViewAllProductTypes')">View Product</a>
                               </li>
                               <li>
-                                  <a>Edit Product</a>
+                                  <a>Edit </a>
                               </li>
                           </ul>
                       </div>
@@ -216,6 +216,13 @@
       <div *ngIf="this.navigationPage ==='ProductTypeCreation'">
         <app-product-type-creation></app-product-type-creation>
       </div>
+      <div *ngIf="this.navigationPage ==='ViewAllProductTypes'">
+         <app-product-type-view></app-product-type-view>
+      </div>
+      <div *ngIf="this.navigationPage ==='EditAllProductTypes'">
+        <app-product-type-edit></app-product-type-edit>
+     </div>
+
 
 </main>
 <!-- page-content" -->

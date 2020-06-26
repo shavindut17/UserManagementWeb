@@ -1,3 +1,86 @@
-<p>
-  product-type-edit works!
-</p>
+
+<form >
+  <div>
+    <h2 class="ui header">All Product Types<i class="user secret icon"></i></h2>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+        <table class="table table-image">
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let product of productTypes">
+            <tr >
+              <td class="w-25">
+                <img src= {{this.product.picture}} class="img-fluid img-thumbnail" alt="Image">
+              </td>
+              <td>{{this.product.name}}</td>
+              <td><button type="button" class="btn btn-outline-secondary"   (click)="show(this.product)">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+</div>
+</form>
+
+
+<div [style.display]="showModal ? 'block' : 'none'"  class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <form  [formGroup]="form" (ngSubmit) ="editProductType()">
+          <div>
+            <h2 class="ui header">New Product Type<i class="user secret icon"></i></h2>
+          <div hidden class="form-group">
+            <label >Id</label>
+            <input type="text" class="form-control" id="inputId" formControlName="id">
+          </div>
+          <div  class="col-md-4 mb-3">
+            <label >Name</label>
+            <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Enter Name">
+            <div *ngIf="form.get('name').touched &&  form.get('name').errors" class="alert alert-danger">Name required</div>
+          </div>
+          <div  class="col-md-4 mb-3">
+            <label >Description</label>
+            <textarea class="form-control" id="inputDescription" formControlName="description" placeholder="Enter Description"></textarea>
+            <div *ngIf="form.get('description').touched &&  form.get('description').errors" class="alert alert-danger">Description required</div>
+          </div>
+          <div  class="col-md-4 mb-3">
+            <label>Picture</label>
+           <app-image-upload (uploadFinishTrigger)='uploadFinishTrigger($event)'></app-image-upload>
+          </div>
+          <div  class="col-md-4 mb-3">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" formControlName="isActive" id="isActive">
+            <label class="form-check-label" for="exampleCheck1">Active Product Type</label>
+          </div>
+        </div>
+        <div  class="col-md-4 mb-3">
+          <button class="ui primary button" type="submit">
+            Save
+          </button>
+        </div>
+        </div>
+        </form>
+
+
+       </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal" (click) ="hide()">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>

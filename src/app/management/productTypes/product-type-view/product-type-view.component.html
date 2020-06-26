@@ -1,3 +1,38 @@
-<p>
-  product-type-view works!
-</p>
+<form >
+  <div>
+    <h2 class="ui header">All Product Types<i class="user secret icon"></i></h2>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+        <table class="table table-image">
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Active</th>
+              <th scope="col">Number of products</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let product of productTypes">
+            <tr >
+              <td class="w-25">
+                <img src= {{this.product.picture}} class="img-fluid img-thumbnail" alt="Image">
+              </td>
+              <td>{{this.product.name}}</td>
+              <td>{{this.product.description}}</td>
+              <td>{{this.product.isActive}}</td>
+              <td>{{this.product.numberOfProducts}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+</form>
